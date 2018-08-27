@@ -24,43 +24,18 @@ struct GCD: SIGINTHandler {
     }
 }
 
-protocol HumanDescription {
-    /**
-     * Description for human-readable output on the CLI. Should be formatted in
-     * such a way that one can quickly glance at the current running duration.
-     */
-    var simpleDescription: String { get }
+func makeDateComponentsFormatter(
+    unitsStyle: DateComponentsFormatter.UnitsStyle
+) -> DateComponentsFormatter {
+    let formatter = DateComponentsFormatter()
+    formatter.unitsStyle = unitsStyle
+    formatter.allowedUnits = [.hour, .minute, .second]
+    formatter.zeroFormattingBehavior = .pad
+    return formatter
 }
 
-protocol MachineDescription {
-    /**
-     * Description for machine-readable output such as in a CSV/spreadsheet of
-     * timer usages.
-     */
-    var description: String { get }
-}
-
-extension TimeInterval: HumanDescription {
-    var simpleDescription: String {
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .brief
-        formatter.allowedUnits = [.hour, .minute, .second]
-        formatter.zeroFormattingBehavior = .pad
-
-        return formatter.string(from: self) ?? ""
-    }
-}
-
-extension TimeInterval: MachineDescription {
-    var description: String {
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .positional
-        formatter.allowedUnits = [.hour, .minute, .second]
-        formatter.zeroFormattingBehavior = .pad
-
-        return formatter.string(from: self) ?? ""
-    }
-}
+let HumanDateComponentsFormatter = makeDateComponentsFormatter(unitsStyle: .brief)
+let MachineDateComponentsFromatter = makeDateComponentsFormatter(unitsStyle: .positional)
 
 func flushStdout() {
     fflush(stdout)
@@ -76,14 +51,13 @@ class AppTimer {
     let startTime = Date()
 
     func tick() {
-        carriageReturnPrint(self.interval.simpleDescription)
+        carriageReturnPrint(HumanDateComponentsFormatter.string(from: self.interval) ?? "")
     }
 
     var interval: TimeInterval {
         return self.startTime.timeIntervalSinceNow
     }
 }
-
 
 let appTimer = AppTimer()
 let timer = Timer.scheduledTimer(
