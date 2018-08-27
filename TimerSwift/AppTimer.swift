@@ -22,7 +22,7 @@ class AppTimer {
         timer = Timer.scheduledTimer(
             withTimeInterval: 1,
             repeats: true
-        ) { (timer: Timer) -> Void in
+        ) { _ in
             self.tick()
         }
     }
@@ -43,7 +43,7 @@ class AppTimer {
     }
 
     func tick() {
-        tickHandlers.forEach { (handler) -> Void in
+        tickHandlers.forEach { handler in
             handler(interval)
         }
     }

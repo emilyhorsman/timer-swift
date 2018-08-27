@@ -50,8 +50,9 @@ class StatusMenuController: NSObject {
         statusItem.title = "Timer"
         statusItem.menu = statusMenu
 
-        appTimer.addTickHandler { (interval: TimeInterval) -> Void in
-            if self.timerState == .Running, let label = StatusBarDateComponentsFromatter.string(from: interval) {
+        appTimer.addTickHandler { interval in
+            if self.timerState == .Running,
+                let label = StatusBarDateComponentsFromatter.string(from: interval) {
                 self.statusItem.title = label
             }
         }
