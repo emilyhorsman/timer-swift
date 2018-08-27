@@ -11,25 +11,26 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="TimerSwift" customModuleProvider="target">
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="TimerSwift" customModuleProvider="target"/>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="T0P-9D-WwU" customClass="StatusMenuController" customModule="TimerSwift" customModuleProvider="target">
             <connections>
-                <outlet property="statusMenu" destination="d6T-St-oaW" id="IGm-Tc-jt1"/>
-                <outlet property="timerMenuItem" destination="zIM-ZS-lBd" id="93f-kr-hbz"/>
+                <outlet property="statusMenu" destination="d6T-St-oaW" id="PYx-TO-4XF"/>
+                <outlet property="timerMenuItem" destination="zIM-ZS-lBd" id="dL4-D9-RQK"/>
             </connections>
         </customObject>
-        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="d6T-St-oaW">
             <items>
                 <menuItem title="Start" id="zIM-ZS-lBd">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="timerClicked:" target="Voe-Tx-rLC" id="8d3-Bm-uU7"/>
+                        <action selector="timerClicked:" target="T0P-9D-WwU" id="o2k-M9-3FU"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Quit" id="MyO-HB-ZNj">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="quitClicked:" target="Voe-Tx-rLC" id="NT4-Za-so8"/>
+                        <action selector="quitClicked:" target="T0P-9D-WwU" id="jlz-pB-Tas"/>
                     </connections>
                 </menuItem>
             </items>
