@@ -43,7 +43,7 @@ protocol MachineDescription {
 extension TimeInterval: HumanDescription {
     var simpleDescription: String {
         let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .positional
+        formatter.unitsStyle = .brief
         formatter.allowedUnits = [.hour, .minute, .second]
         formatter.zeroFormattingBehavior = .pad
 
@@ -54,7 +54,7 @@ extension TimeInterval: HumanDescription {
 extension TimeInterval: MachineDescription {
     var description: String {
         let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .brief
+        formatter.unitsStyle = .positional
         formatter.allowedUnits = [.hour, .minute, .second]
         formatter.zeroFormattingBehavior = .pad
 
