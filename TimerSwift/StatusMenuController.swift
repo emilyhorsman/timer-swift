@@ -34,7 +34,7 @@ class StatusMenuController: NSObject {
 
     @IBAction func finishTimerClicked(_ sender: NSMenuItem) {
         guard case .Running(_) = timerState else {
-            return assertionFailure("timerClicked action fired when timer was not Running")
+            return assertionFailure("finishTimerClicked action fired when timer was not Running")
         }
 
         stop()
@@ -56,6 +56,12 @@ class StatusMenuController: NSObject {
     }
 
     @IBAction func timerTaskClicked(_ sender: NSMenuItem) {
+        // TODO: If we're currently Running then it should log that and switch
+        // to a new task.
+        guard case .Stopped = timerState else {
+            return assertionFailure("timerTaskClicked action fired when timer was not Running")
+        }
+
         start(title: sender.title)
     }
 
