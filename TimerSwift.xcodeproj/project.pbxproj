@@ -11,7 +11,7 @@
 		A1F21A6C21345758001FDB94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F21A6B21345758001FDB94 /* Assets.xcassets */; };
 		A1F21A6F21345758001FDB94 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F21A6D21345758001FDB94 /* MainMenu.xib */; };
 		A1F21A7921345B1B001FDB94 /* CLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F21A7721345B1B001FDB94 /* CLI.swift */; };
-		A1F21A7A21345B1B001FDB94 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F21A7821345B1B001FDB94 /* Timer.swift */; };
+		A1F21A7A21345B1B001FDB94 /* AppTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F21A7821345B1B001FDB94 /* AppTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,7 +22,7 @@
 		A1F21A7021345758001FDB94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1F21A7121345758001FDB94 /* TimerSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimerSwift.entitlements; sourceTree = "<group>"; };
 		A1F21A7721345B1B001FDB94 /* CLI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLI.swift; sourceTree = "<group>"; };
-		A1F21A7821345B1B001FDB94 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		A1F21A7821345B1B001FDB94 /* AppTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				A1F21A7721345B1B001FDB94 /* CLI.swift */,
-				A1F21A7821345B1B001FDB94 /* Timer.swift */,
+				A1F21A7821345B1B001FDB94 /* AppTimer.swift */,
 				A1F21A6921345757001FDB94 /* AppDelegate.swift */,
 				A1F21A6B21345758001FDB94 /* Assets.xcassets */,
 				A1F21A6D21345758001FDB94 /* MainMenu.xib */,
@@ -136,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1F21A7A21345B1B001FDB94 /* Timer.swift in Sources */,
+				A1F21A7A21345B1B001FDB94 /* AppTimer.swift in Sources */,
 				A1F21A7921345B1B001FDB94 /* CLI.swift in Sources */,
 				A1F21A6A21345757001FDB94 /* AppDelegate.swift in Sources */,
 			);

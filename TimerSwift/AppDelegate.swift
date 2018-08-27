@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var statusMenu: NSMenu!
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    let appTimer = AppTimer()
 
     @IBAction func quitClicked(_ sender: NSMenuItem) {
         NSApp.terminate(self)
@@ -24,6 +25,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         statusItem.title = "Timer"
         statusItem.menu = statusMenu
+        self.appTimer.addTickHandler { (interval: TimeInterval) -> Void in
+            print("coming from appTimer", HumanDateComponentsFormatter.string(from: interval) ?? "no time")
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
