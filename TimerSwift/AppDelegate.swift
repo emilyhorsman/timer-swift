@@ -28,33 +28,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func timerClicked(_ sender: NSMenuItem) {
-        switch self.timerState {
+        switch timerState {
         case .Running:
-            self.stop()
+            stop()
         case .Stopped:
-            self.start()
+            start()
         }
     }
 
     func start() {
-        self.timerState = .Running
-        self.timerMenuItem.title = "Stop"
-        self.appTimer.reset()
+        timerState = .Running
+        timerMenuItem.title = "Stop"
+        appTimer.reset()
     }
 
     func stop() {
-        self.timerState = .Stopped
-        self.timerMenuItem.title = "Start"
-        self.statusItem.title = "Timer"
+        timerState = .Stopped
+        timerMenuItem.title = "Start"
+        statusItem.title = "Timer"
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         NSApp.setActivationPolicy(.prohibited)
 
-        self.statusItem.title = "Timer"
-        self.statusItem.menu = statusMenu
+        statusItem.title = "Timer"
+        statusItem.menu = statusMenu
 
-        self.appTimer.addTickHandler { (interval: TimeInterval) -> Void in
+        appTimer.addTickHandler { (interval: TimeInterval) -> Void in
             if self.timerState == .Running, let label = StatusBarDateComponentsFromatter.string(from: interval) {
                 self.statusItem.title = label
             }

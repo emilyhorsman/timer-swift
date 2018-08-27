@@ -19,7 +19,7 @@ class AppTimer {
     var tickHandlers = [(TimeInterval) -> Void]()
 
     init() {
-        self.timer = Timer.scheduledTimer(
+        timer = Timer.scheduledTimer(
             withTimeInterval: 1,
             repeats: true
         ) { (timer: Timer) -> Void in
@@ -39,16 +39,16 @@ class AppTimer {
 
     func reset() {
         startTime = Date()
-        self.timer?.fire()
+        timer?.fire()
     }
 
     func tick() {
-        self.tickHandlers.forEach { (handler) -> Void in
-            handler(self.interval)
+        tickHandlers.forEach { (handler) -> Void in
+            handler(interval)
         }
     }
 
     var interval: TimeInterval {
-        return self.startTime.timeIntervalSinceNow
+        return startTime.timeIntervalSinceNow
     }
 }
