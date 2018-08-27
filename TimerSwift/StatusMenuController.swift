@@ -72,7 +72,7 @@ class StatusMenuController: NSObject {
         statusMenu.autoenablesItems = false
         finishTimerMenuItem.isEnabled = false
 
-        ["3DB3", "3GC3", "3MI3", "3SD3", "4HC3"].forEach { title in
+        ["3DB3", "3GC3", "3MI3", "3SD3", "4HC3"].enumerated().forEach { index, title in
             let item = NSMenuItem(
                 title: title,
                 action: #selector(StatusMenuController.timerTaskClicked(_:)),
@@ -80,7 +80,7 @@ class StatusMenuController: NSObject {
             )
             item.target = self
             item.isEnabled = true
-            statusMenu.addItem(item)
+            statusMenu.insertItem(item, at: 2 + index)
             timerTasks.append(TimerTask(title: title, menuItem: item))
         }
 
