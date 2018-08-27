@@ -43,7 +43,7 @@ func flushStdout() {
 
 func carriageReturnPrint(_ item: Any) {
     // TODO: Support splatting when SR-128 is resolved.
-    print("\r", item, terminator: "")
+    print("\r", item, separator: "", terminator: "")
     flushStdout()
 }
 
