@@ -19,12 +19,16 @@ class AppTimer {
     var tickHandlers = [(TimeInterval) -> Void]()
 
     init() {
-        timer = Timer.scheduledTimer(
-            withTimeInterval: 1,
+        timer = Timer.init(
+            timeInterval: 1,
             repeats: true
         ) { _ in
             self.tick()
         }
+        // Avoiding scheduledTimer with the default run loop mode because we
+        // want to be able to update the UI (e.g., the timer/NSMenu title) while
+        // the menu is open.
+        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
     }
 
     deinit {
