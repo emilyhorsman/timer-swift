@@ -72,20 +72,29 @@ func carriageReturnPrint(_ item: Any) {
     flushStdout()
 }
 
-let startTime = Date()
-var endTime = startTime
+class AppTimer {
+    let startTime = Date()
+
+    func tick() {
+        carriageReturnPrint(self.interval.simpleDescription)
+    }
+
+    var interval: TimeInterval {
+        return self.startTime.timeIntervalSinceNow
+    }
+}
+
+
+let appTimer = AppTimer()
 let timer = Timer.scheduledTimer(
     withTimeInterval: 1,
     repeats: true
-) { (_) -> Void in
-    endTime = Date()
-    let interval = endTime.timeIntervalSince(startTime)
-    carriageReturnPrint(interval.simpleDescription)
+) { (_: Timer) -> Void in
+    appTimer.tick()
 }
 
 let signalDispatchSource = GCD.install {
-    let interval = endTime.timeIntervalSince(startTime)
-    carriageReturnPrint(interval.simpleDescription)
+    appTimer.tick()
     print("\nBye!")
 }
 
