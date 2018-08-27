@@ -47,11 +47,7 @@ extension TimeInterval: HumanDescription {
         formatter.allowedUnits = [.hour, .minute, .second]
         formatter.zeroFormattingBehavior = .pad
 
-        if let result = formatter.string(from: self) {
-            return result
-        } else {
-            return ""
-        }
+        return formatter.string(from: self) ?? ""
     }
 }
 
@@ -62,11 +58,7 @@ extension TimeInterval: MachineDescription {
         formatter.allowedUnits = [.hour, .minute, .second]
         formatter.zeroFormattingBehavior = .pad
 
-        if let result = formatter.string(from: self) {
-            return result
-        } else {
-            return ""
-        }
+        return formatter.string(from: self) ?? ""
     }
 }
 
