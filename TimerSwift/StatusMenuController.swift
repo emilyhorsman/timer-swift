@@ -81,7 +81,8 @@ class StatusMenuController: NSObject {
             let item = NSMenuItem(
                 title: title,
                 action: #selector(StatusMenuController.timerTaskClicked(_:)),
-                keyEquivalent: ""
+                // TODO: No key equivalent for index >= 9
+                keyEquivalent: String(index + 1)
             )
             item.target = self
             item.isEnabled = true
