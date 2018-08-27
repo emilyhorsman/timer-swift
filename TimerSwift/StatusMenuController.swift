@@ -42,6 +42,7 @@ class StatusMenuController: NSObject {
 
     func start(title: String) {
         let task = timerTasks.first(where: { $0.title == title })!
+        task.menuItem.title += " ⏱"
         timerState = .Running(task)
         finishTimerMenuItem.isEnabled = true
         timerTasks.forEach { $0.menuItem.isEnabled = false }
@@ -51,7 +52,11 @@ class StatusMenuController: NSObject {
     func stop() {
         timerState = .Stopped
         finishTimerMenuItem.isEnabled = false
-        timerTasks.forEach { $0.menuItem.isEnabled = true }
+        timerTasks.forEach {
+            $0.menuItem.isEnabled = true
+            // TODO: This is only necessary on the running task.
+            $0.menuItem.title = $0.title
+        }
         statusItem.title = "Timer"
     }
 
