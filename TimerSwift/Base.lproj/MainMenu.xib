@@ -14,6 +14,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="TimerSwift" customModuleProvider="target">
             <connections>
                 <outlet property="statusMenu" destination="d6T-St-oaW" id="IGm-Tc-jt1"/>
+                <outlet property="timerMenuItem" destination="zIM-ZS-lBd" id="93f-kr-hbz"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -21,6 +22,9 @@
             <items>
                 <menuItem title="Start" id="zIM-ZS-lBd">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="timerClicked:" target="Voe-Tx-rLC" id="8d3-Bm-uU7"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Quit" id="MyO-HB-ZNj">
                     <modifierMask key="keyEquivalentModifierMask"/>

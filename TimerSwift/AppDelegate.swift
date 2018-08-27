@@ -8,10 +8,17 @@
 
 import Cocoa
 
+enum TimerState {
+    case Stopped, Running
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var statusMenu: NSMenu!
+    @IBOutlet weak var timerMenuItem: NSMenuItem!
+
+    var timerState: TimerState = .Stopped
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let appTimer = AppTimer()
@@ -20,13 +27,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.terminate(self)
     }
 
+    @IBAction func timerClicked(_ sender: NSMenuItem) {
+        switch self.timerState {
+        case .Running:
+            self.stop()
+        case .Stopped:
+            self.start()
+        }
+    }
+
+    func start() {
+        self.timerState = .Running
+        self.timerMenuItem.title = "Stop"
+        self.appTimer.reset()
+    }
+
+    func stop() {
+        self.timerState = .Stopped
+        self.timerMenuItem.title = "Start"
+        self.statusItem.title = "Timer"
+    }
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         NSApp.setActivationPolicy(.prohibited)
 
-        statusItem.title = "Timer"
-        statusItem.menu = statusMenu
+        self.statusItem.title = "Timer"
+        self.statusItem.menu = statusMenu
+
         self.appTimer.addTickHandler { (interval: TimeInterval) -> Void in
-            print("coming from appTimer", HumanDateComponentsFormatter.string(from: interval) ?? "no time")
+            if self.timerState == .Running, let label = StatusBarDateComponentsFromatter.string(from: interval) {
+                self.statusItem.title = label
+            }
         }
     }
 

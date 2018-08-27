@@ -11,7 +11,7 @@ func makeDateComponentsFormatter(
 }
 
 let HumanDateComponentsFormatter = makeDateComponentsFormatter(unitsStyle: .brief)
-let MachineDateComponentsFromatter = makeDateComponentsFormatter(unitsStyle: .positional)
+let StatusBarDateComponentsFromatter = makeDateComponentsFormatter(unitsStyle: .positional)
 
 class AppTimer {
     var startTime = Date()
@@ -39,6 +39,7 @@ class AppTimer {
 
     func reset() {
         startTime = Date()
+        self.timer?.fire()
     }
 
     func tick() {
