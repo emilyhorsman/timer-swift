@@ -24,9 +24,66 @@ struct GCD: SIGINTHandler {
     }
 }
 
+protocol IntervalDescription {
+    var description: String { get }
+    var simpleDescription: String { get }
+    func printSimpleDescription() -> Void
+}
+
+extension TimeInterval: IntervalDescription {
+    var description: String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .brief
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+
+        if let result = formatter.string(from: self) {
+            return result
+        } else {
+            return ""
+        }
+    }
+
+    var simpleDescription: String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+
+        if let result = formatter.string(from: self) {
+            return result
+        } else {
+            return ""
+        }
+    }
+
+    func printSimpleDescription() {
+        print("\r", self.description, terminator: "")
+        flush_stdout()
+    }
+}
+
+func flush_stdout() {
+    fflush(stdout)
+}
+
+let startTime = Date()
+var endTime = startTime
+let timer = Timer.scheduledTimer(
+    withTimeInterval: 1,
+    repeats: true
+) { (_) -> Void in
+    endTime = Date()
+    let interval = endTime.timeIntervalSince(startTime)
+    interval.printSimpleDescription()
+}
+
 let signalDispatchSource = GCD.install {
-    print("Bye!")
+    let interval = endTime.timeIntervalSince(startTime)
+    interval.printSimpleDescription()
+    print("\nBye!")
 }
 
 print("Starting.")
-while true { }
+timer.fire()
+RunLoop.main.run()
