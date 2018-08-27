@@ -24,26 +24,23 @@ struct GCD: SIGINTHandler {
     }
 }
 
-protocol IntervalDescription {
-    var description: String { get }
+protocol HumanDescription {
+    /**
+     * Description for human-readable output on the CLI. Should be formatted in
+     * such a way that one can quickly glance at the current running duration.
+     */
     var simpleDescription: String { get }
-    func printSimpleDescription() -> Void
 }
 
-extension TimeInterval: IntervalDescription {
-    var description: String {
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .brief
-        formatter.allowedUnits = [.hour, .minute, .second]
-        formatter.zeroFormattingBehavior = .pad
+protocol MachineDescription {
+    /**
+     * Description for machine-readable output such as in a CSV/spreadsheet of
+     * timer usages.
+     */
+    var description: String { get }
+}
 
-        if let result = formatter.string(from: self) {
-            return result
-        } else {
-            return ""
-        }
-    }
-
+extension TimeInterval: HumanDescription {
     var simpleDescription: String {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
@@ -56,15 +53,31 @@ extension TimeInterval: IntervalDescription {
             return ""
         }
     }
+}
 
-    func printSimpleDescription() {
-        print("\r", self.description, terminator: "")
-        flush_stdout()
+extension TimeInterval: MachineDescription {
+    var description: String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .brief
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+
+        if let result = formatter.string(from: self) {
+            return result
+        } else {
+            return ""
+        }
     }
 }
 
-func flush_stdout() {
+func flushStdout() {
     fflush(stdout)
+}
+
+func carriageReturnPrint(_ item: Any) {
+    // TODO: Support splatting when SR-128 is resolved.
+    print("\r", item, terminator: "")
+    flushStdout()
 }
 
 let startTime = Date()
@@ -75,12 +88,12 @@ let timer = Timer.scheduledTimer(
 ) { (_) -> Void in
     endTime = Date()
     let interval = endTime.timeIntervalSince(startTime)
-    interval.printSimpleDescription()
+    carriageReturnPrint(interval.simpleDescription)
 }
 
 let signalDispatchSource = GCD.install {
     let interval = endTime.timeIntervalSince(startTime)
-    interval.printSimpleDescription()
+    carriageReturnPrint(interval.simpleDescription)
     print("\nBye!")
 }
 
