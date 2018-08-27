@@ -9,7 +9,8 @@
 import Cocoa
 
 enum TimerState {
-    case Stopped, Running
+    case Stopped
+    case Running(TimerTask)
 }
 
 struct TimerTask {
@@ -19,7 +20,7 @@ struct TimerTask {
 
 class StatusMenuController: NSObject {
     @IBOutlet weak var statusMenu: NSMenu!
-    @IBOutlet weak var timerMenuItem: NSMenuItem!
+    @IBOutlet weak var finishTimerMenuItem: NSMenuItem!
 
     var timerState: TimerState = .Stopped
 
@@ -31,34 +32,39 @@ class StatusMenuController: NSObject {
         NSApp.terminate(self)
     }
 
-    @IBAction func timerClicked(_ sender: NSMenuItem) {
-        switch timerState {
-        case .Running:
-            stop()
-        case .Stopped:
-            start()
+    @IBAction func finishTimerClicked(_ sender: NSMenuItem) {
+        guard case .Running(_) = timerState else {
+            return assertionFailure("timerClicked action fired when timer was not Running")
         }
+
+        stop()
     }
 
-    func start() {
-        timerState = .Running
-        timerMenuItem.title = "Stop"
+    func start(title: String) {
+        let task = timerTasks.first(where: { $0.title == title })!
+        timerState = .Running(task)
+        finishTimerMenuItem.isEnabled = true
+        timerTasks.forEach { $0.menuItem.isEnabled = false }
         appTimer.reset()
     }
 
     func stop() {
         timerState = .Stopped
-        timerMenuItem.title = "Start"
+        finishTimerMenuItem.isEnabled = false
+        timerTasks.forEach { $0.menuItem.isEnabled = true }
         statusItem.title = "Timer"
     }
 
     @IBAction func timerTaskClicked(_ sender: NSMenuItem) {
-        print(sender.title)
+        start(title: sender.title)
     }
 
     override func awakeFromNib() {
         statusItem.title = "Timer"
         statusItem.menu = statusMenu
+        // Take control of whether items are enabled/disabled from the menu.
+        statusMenu.autoenablesItems = false
+        finishTimerMenuItem.isEnabled = false
 
         ["3DB3", "3GC3", "3MI3", "3SD3", "4HC3"].forEach { title in
             let item = NSMenuItem(
@@ -72,9 +78,8 @@ class StatusMenuController: NSObject {
             timerTasks.append(TimerTask(title: title, menuItem: item))
         }
 
-
         appTimer.addTickHandler { interval in
-            if self.timerState == .Running,
+            if case .Running(_) = self.timerState,
                 let label = StatusBarDateComponentsFromatter.string(from: interval) {
                 self.statusItem.title = label
             }

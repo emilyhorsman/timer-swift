@@ -15,22 +15,22 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="T0P-9D-WwU" customClass="StatusMenuController" customModule="TimerSwift" customModuleProvider="target">
             <connections>
+                <outlet property="finishTimerMenuItem" destination="zIM-ZS-lBd" id="dL4-D9-RQK"/>
                 <outlet property="statusMenu" destination="d6T-St-oaW" id="PYx-TO-4XF"/>
-                <outlet property="timerMenuItem" destination="zIM-ZS-lBd" id="dL4-D9-RQK"/>
             </connections>
         </customObject>
         <menu id="d6T-St-oaW">
             <items>
-                <menuItem title="Start" id="zIM-ZS-lBd">
+                <menuItem title="Finish Timer" id="zIM-ZS-lBd">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="timerClicked:" target="T0P-9D-WwU" id="o2k-M9-3FU"/>
+                        <action selector="finishTimerClicked:" target="T0P-9D-WwU" id="o2k-M9-3FU"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Quit" id="MyO-HB-ZNj">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="quitClicked:" target="T0P-9D-WwU" id="jlz-pB-Tas"/>
+                        <action selector="quitClicked:" target="T0P-9D-WwU" id="HfB-Hx-HeM"/>
                     </connections>
                 </menuItem>
             </items>
