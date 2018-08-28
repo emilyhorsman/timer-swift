@@ -144,10 +144,11 @@
             </view>
             <point key="canvasLocation" x="192" y="-188"/>
         </window>
-        <customObject id="kvr-WB-fS4" customClass="TimerTasksController" customModule="TimerSwift" customModuleProvider="target">
+        <customObject id="kvr-WB-fS4" customClass="PreferencesWindowController" customModule="TimerSwift" customModuleProvider="target">
             <connections>
                 <outlet property="removeButton" destination="54t-K2-gJR" id="8KN-Wv-4Dt"/>
                 <outlet property="timerTasksTableView" destination="yZO-bn-B94" id="UK8-gI-Y6W"/>
+                <outlet property="view" destination="lyg-Og-iS6" id="h9I-LX-rEp"/>
             </connections>
         </customObject>
         <menu id="d6T-St-oaW">

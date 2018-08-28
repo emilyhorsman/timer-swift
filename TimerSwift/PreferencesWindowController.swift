@@ -18,7 +18,7 @@ extension Array {
     }
 }
 
-class TimerTasksController: NSObject {
+class PreferencesWindowController: NSViewController {
     @IBOutlet weak var timerTasksTableView: NSTableView!
     @IBOutlet weak var removeButton: NSButton!
 
@@ -30,10 +30,8 @@ class TimerTasksController: NSObject {
         "4HC3",
     ]
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // TODO: There's probably a better part of the lifecycle to put this
-        // in but eh idk it's my first AppKit thing alright ¯\_(ツ)_/¯.
+    override func viewDidLoad() {
+        super.viewDidLoad()
         timerTasksTableView.dataSource = self
         timerTasksTableView.delegate = self
         removeButton.isEnabled = false
@@ -50,7 +48,7 @@ class TimerTasksController: NSObject {
     }
 }
 
-extension TimerTasksController: NSTextFieldDelegate {
+extension PreferencesWindowController: NSTextFieldDelegate {
     override func controlTextDidEndEditing(_ obj: Notification) {
         // TODO: Prevent blank entries.
         guard let textField = obj.object as? NSTextField else {
@@ -70,13 +68,13 @@ extension TimerTasksController: NSTextFieldDelegate {
     }
 }
 
-extension TimerTasksController: NSTableViewDataSource {
+extension PreferencesWindowController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return data.count
     }
 }
 
-extension TimerTasksController: NSTableViewDelegate {
+extension PreferencesWindowController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard row >= 0 && row < data.count else {
             return nil
