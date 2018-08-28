@@ -52,17 +52,19 @@ class TimerTasksController: NSObject {
 extension TimerTasksController: NSTextFieldDelegate {
     override func controlTextDidEndEditing(_ obj: Notification) {
         // TODO: Prevent blank entries.
-        guard let textField = obj.object else {
+        guard let textField = obj.object as? NSTextField else {
             return
         }
-        let row = timerTasksTableView.selectedRow
+        let row = textField.tag
         guard row >= 0 && row < data.count else {
             return
         }
         data[row] = textField.stringValue
+        // Probably unnecessary but it's just text (thus cheap?) and builds
+        // confidence that the backing data is synced.
         timerTasksTableView.reloadData(
-            forRowIndexes: <#T##IndexSet#>(row),
-            columnIndexes: IndexSet(0)
+            forRowIndexes: IndexSet(integer: row),
+            columnIndexes: IndexSet(integer: 0)
         )
     }
 }
@@ -93,10 +95,14 @@ extension TimerTasksController: NSTableViewDelegate {
             ) as? NSTableCellView else {
             return nil
         }
+        guard let textField = cell.textField else {
+            return nil
+        }
+        textField.stringValue = data[row]
+        textField.isEditable = true
+        textField.delegate = self
+        textField.tag = row
 
-        cell.textField?.stringValue = data[row]
-        cell.textField?.isEditable = true
-        cell.textField?.delegate = self
         return cell
     }
 
