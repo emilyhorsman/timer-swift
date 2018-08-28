@@ -109,6 +109,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="addClicked:" target="kvr-WB-fS4" id="ONN-Vt-fCf"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="54t-K2-gJR">
                         <rect key="frame" x="50" y="19" width="30" height="32"/>
@@ -121,6 +124,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="removeClicked:" target="kvr-WB-fS4" id="SQf-xP-O9r"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -140,6 +146,7 @@
         </window>
         <customObject id="kvr-WB-fS4" customClass="TimerTasksController" customModule="TimerSwift" customModuleProvider="target">
             <connections>
+                <outlet property="removeButton" destination="54t-K2-gJR" id="8KN-Wv-4Dt"/>
                 <outlet property="timerTasksTableView" destination="yZO-bn-B94" id="UK8-gI-Y6W"/>
             </connections>
         </customObject>

@@ -8,10 +8,21 @@
 
 import Cocoa
 
+extension Array {
+    mutating func removeIndices(in indices: IndexSet) {
+        var count = 0
+        indices.forEach { index in
+            remove(at: index - count)
+            count += 1
+        }
+    }
+}
+
 class TimerTasksController: NSObject {
     @IBOutlet weak var timerTasksTableView: NSTableView!
+    @IBOutlet weak var removeButton: NSButton!
 
-    let data = [
+    var data = [
         "3DB3",
         "3GC3",
         "3MI3",
@@ -25,6 +36,16 @@ class TimerTasksController: NSObject {
         // in but eh idk it's my first AppKit thing alright ¯\_(ツ)_/¯.
         timerTasksTableView.dataSource = self
         timerTasksTableView.delegate = self
+        removeButton.isEnabled = false
+    }
+
+    @IBAction func addClicked(_ sender: Any) {
+        print("Add!")
+    }
+
+    @IBAction func removeClicked(_ sender: Any) {
+        data.removeIndices(in: timerTasksTableView.selectedRowIndexes)
+        timerTasksTableView.reloadData()
     }
 }
 
@@ -57,5 +78,14 @@ extension TimerTasksController: NSTableViewDelegate {
 
         cell.textField?.stringValue = data[row]
         return cell
+    }
+
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        // Imperative view logic ugh
+        if timerTasksTableView.numberOfSelectedRows == 0 {
+            removeButton.isEnabled = false
+            return
+        }
+        removeButton.isEnabled = true
     }
 }
