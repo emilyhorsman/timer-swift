@@ -42,6 +42,11 @@
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="t7w-Dn-zww"/>
                 <menuItem isSeparatorItem="YES" id="xg5-YI-YK2"/>
+                <menuItem title="Configure Tasks" keyEquivalent="," id="Xw5-U5-UBf">
+                    <connections>
+                        <action selector="configureTasksClicked:" target="T0P-9D-WwU" id="HTA-mh-XEV"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Quit" id="MyO-HB-ZNj">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

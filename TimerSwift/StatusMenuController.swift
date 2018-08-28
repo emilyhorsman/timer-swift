@@ -29,6 +29,11 @@ class StatusMenuController: NSObject {
     let appTimer = AppTimer()
     var timerTasks = [TimerTask]()
 
+    @IBAction func configureTasksClicked(_ sender: NSMenuItem) {
+        preferencesWindow.level = .normal
+        preferencesWindow.makeKeyAndOrderFront(sender)
+    }
+
     @IBAction func quitClicked(_ sender: NSMenuItem) {
         NSApp.terminate(self)
     }
@@ -69,8 +74,6 @@ class StatusMenuController: NSObject {
         }
 
         start(title: sender.title)
-        preferencesWindow.level = .mainMenu
-        preferencesWindow.makeKeyAndOrderFront(nil)
     }
 
     override func awakeFromNib() {
