@@ -40,13 +40,13 @@
                         </textFieldCell>
                     </textField>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eus-z1-3p9">
-                        <rect key="frame" x="20" y="50" width="440" height="148"/>
+                        <rect key="frame" x="20" y="39" width="440" height="159"/>
                         <clipView key="contentView" id="zZ1-ps-iwi">
-                            <rect key="frame" x="1" y="1" width="438" height="146"/>
+                            <rect key="frame" x="1" y="1" width="438" height="157"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnResizing="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="yZO-bn-B94">
-                                    <rect key="frame" x="0.0" y="0.0" width="438" height="146"/>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="yZO-bn-B94">
+                                    <rect key="frame" x="0.0" y="0.0" width="438" height="157"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -65,7 +65,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView identifier="TaskCell" id="Qlm-B1-Szz">
+                                                <tableCellView id="Qlm-B1-Szz">
                                                     <rect key="frame" x="1" y="1" width="435" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -99,34 +99,24 @@
                         </scroller>
                     </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gdp-t3-cQr">
-                        <rect key="frame" x="20" y="19" width="30" height="32"/>
+                        <rect key="frame" x="20" y="19" width="19" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="gdp-t3-cQr" secondAttribute="height" multiplier="1:1" id="3Rf-l8-cXf"/>
-                            <constraint firstAttribute="width" constant="30" id="eUl-1a-FI9"/>
-                            <constraint firstAttribute="height" constant="30" id="ulI-Du-dcJ"/>
                         </constraints>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bjY-Tk-vcf">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
-                        <connections>
-                            <action selector="addClicked:" target="kvr-WB-fS4" id="ONN-Vt-fCf"/>
-                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="54t-K2-gJR">
-                        <rect key="frame" x="50" y="19" width="30" height="32"/>
+                        <rect key="frame" x="39" y="19" width="19" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="JzK-P9-v8e"/>
-                            <constraint firstAttribute="width" constant="30" id="WlK-ET-KpB"/>
                             <constraint firstAttribute="width" secondItem="54t-K2-gJR" secondAttribute="height" multiplier="1:1" id="dLH-Rp-ChA"/>
                         </constraints>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="D1z-6A-oGw">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
-                        <connections>
-                            <action selector="removeClicked:" target="kvr-WB-fS4" id="SQf-xP-O9r"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -134,6 +124,7 @@
                     <constraint firstItem="gdp-t3-cQr" firstAttribute="top" secondItem="eus-z1-3p9" secondAttribute="bottom" id="Em9-LR-Gl8"/>
                     <constraint firstAttribute="bottom" secondItem="gdp-t3-cQr" secondAttribute="bottom" constant="20" id="HFu-N8-it9"/>
                     <constraint firstItem="eus-z1-3p9" firstAttribute="top" secondItem="NXh-ak-kse" secondAttribute="bottom" constant="8" id="M7y-ej-GCJ"/>
+                    <constraint firstItem="54t-K2-gJR" firstAttribute="width" secondItem="54t-K2-gJR" secondAttribute="height" multiplier="1:1" id="UNt-Ui-Qd2"/>
                     <constraint firstItem="NXh-ak-kse" firstAttribute="leading" secondItem="lyg-Og-iS6" secondAttribute="leading" constant="20" id="UgU-bh-Kww"/>
                     <constraint firstAttribute="trailing" secondItem="eus-z1-3p9" secondAttribute="trailing" constant="20" symbolic="YES" id="dyM-dy-MVi"/>
                     <constraint firstItem="gdp-t3-cQr" firstAttribute="leading" secondItem="lyg-Og-iS6" secondAttribute="leading" constant="20" id="ej5-L8-6AP"/>
@@ -144,12 +135,6 @@
             </view>
             <point key="canvasLocation" x="192" y="-188"/>
         </window>
-        <customObject id="kvr-WB-fS4" customClass="TimerTasksController" customModule="TimerSwift" customModuleProvider="target">
-            <connections>
-                <outlet property="removeButton" destination="54t-K2-gJR" id="8KN-Wv-4Dt"/>
-                <outlet property="timerTasksTableView" destination="yZO-bn-B94" id="UK8-gI-Y6W"/>
-            </connections>
-        </customObject>
         <menu id="d6T-St-oaW">
             <items>
                 <menuItem title="Finish Timer" id="zIM-ZS-lBd">
@@ -173,6 +158,11 @@
                 </menuItem>
             </items>
         </menu>
+        <customObject id="v57-k4-XyL" customClass="PreferencesWindowController" customModule="TimerSwift" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="lyg-Og-iS6" id="tit-Xz-ARO"/>
+            </connections>
+        </customObject>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
