@@ -21,6 +21,7 @@ struct TimerTask {
 class StatusMenuController: NSObject {
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var finishTimerMenuItem: NSMenuItem!
+    @IBOutlet weak var preferencesWindow: NSWindow!
 
     var timerState: TimerState = .Stopped
 
@@ -68,6 +69,8 @@ class StatusMenuController: NSObject {
         }
 
         start(title: sender.title)
+        preferencesWindow.level = .mainMenu
+        preferencesWindow.makeKeyAndOrderFront(nil)
     }
 
     override func awakeFromNib() {

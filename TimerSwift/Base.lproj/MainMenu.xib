@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -16,9 +17,21 @@
         <customObject id="T0P-9D-WwU" customClass="StatusMenuController" customModule="TimerSwift" customModuleProvider="target">
             <connections>
                 <outlet property="finishTimerMenuItem" destination="zIM-ZS-lBd" id="dL4-D9-RQK"/>
+                <outlet property="preferencesWindow" destination="OBE-b5-c97" id="Rl0-gH-9Eo"/>
                 <outlet property="statusMenu" destination="d6T-St-oaW" id="PYx-TO-4XF"/>
             </connections>
         </customObject>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="OBE-b5-c97">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="163" y="205" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+            <view key="contentView" id="lyg-Og-iS6">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+            <point key="canvasLocation" x="192" y="-188"/>
+        </window>
         <menu id="d6T-St-oaW">
             <items>
                 <menuItem title="Finish Timer" id="zIM-ZS-lBd">
