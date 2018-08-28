@@ -49,6 +49,24 @@ class TimerTasksController: NSObject {
     }
 }
 
+extension TimerTasksController: NSTextFieldDelegate {
+    override func controlTextDidEndEditing(_ obj: Notification) {
+        // TODO: Prevent blank entries.
+        guard let textField = obj.object else {
+            return
+        }
+        let row = timerTasksTableView.selectedRow
+        guard row >= 0 && row < data.count else {
+            return
+        }
+        data[row] = textField.stringValue
+        timerTasksTableView.reloadData(
+            forRowIndexes: <#T##IndexSet#>(row),
+            columnIndexes: IndexSet(0)
+        )
+    }
+}
+
 extension TimerTasksController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return data.count
@@ -77,6 +95,8 @@ extension TimerTasksController: NSTableViewDelegate {
         }
 
         cell.textField?.stringValue = data[row]
+        cell.textField?.isEditable = true
+        cell.textField?.delegate = self
         return cell
     }
 
