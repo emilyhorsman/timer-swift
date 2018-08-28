@@ -13,6 +13,7 @@
 		A1F21A7921345B1B001FDB94 /* CLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F21A7721345B1B001FDB94 /* CLI.swift */; };
 		A1F21A7A21345B1B001FDB94 /* AppTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F21A7821345B1B001FDB94 /* AppTimer.swift */; };
 		A1F21A7C213468CF001FDB94 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F21A7B213468CF001FDB94 /* StatusMenuController.swift */; };
+		A1F2CAB62135AC8000B8599B /* TimerTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2CAB52135AC8000B8599B /* TimerTasksController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		A1F21A7721345B1B001FDB94 /* CLI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLI.swift; sourceTree = "<group>"; };
 		A1F21A7821345B1B001FDB94 /* AppTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTimer.swift; sourceTree = "<group>"; };
 		A1F21A7B213468CF001FDB94 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		A1F2CAB52135AC8000B8599B /* TimerTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTasksController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				A1F21A7021345758001FDB94 /* Info.plist */,
 				A1F21A7121345758001FDB94 /* TimerSwift.entitlements */,
 				A1F21A7B213468CF001FDB94 /* StatusMenuController.swift */,
+				A1F2CAB52135AC8000B8599B /* TimerTasksController.swift */,
 			);
 			path = TimerSwift;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 				A1F21A7A21345B1B001FDB94 /* AppTimer.swift in Sources */,
 				A1F21A7921345B1B001FDB94 /* CLI.swift in Sources */,
 				A1F21A7C213468CF001FDB94 /* StatusMenuController.swift in Sources */,
+				A1F2CAB62135AC8000B8599B /* TimerTasksController.swift in Sources */,
 				A1F21A6A21345757001FDB94 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
