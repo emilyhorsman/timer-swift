@@ -40,7 +40,8 @@ class TimerTasksController: NSObject {
     }
 
     @IBAction func addClicked(_ sender: Any) {
-        print("Add!")
+        data.append("New Timer")
+        timerTasksTableView.reloadData()
     }
 
     @IBAction func removeClicked(_ sender: Any) {
