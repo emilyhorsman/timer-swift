@@ -53,7 +53,7 @@
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn width="435" minWidth="40" maxWidth="1000" id="8LS-pn-sbE">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Task Title">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -77,6 +77,9 @@
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <binding destination="Qlm-B1-Szz" name="value" keyPath="objectValue.title" id="x8i-xm-JIP"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <connections>
@@ -86,6 +89,10 @@
                                             </prototypeCellViews>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <binding destination="fGB-ls-bv6" name="content" keyPath="arrangedObjects" id="fLz-B1-Ycx"/>
+                                        <binding destination="fGB-ls-bv6" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="fLz-B1-Ycx" id="6W4-fw-8ub"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                         </clipView>
@@ -107,6 +114,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="addClicked:" target="v57-k4-XyL" id="XFC-8T-Vcr"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="54t-K2-gJR">
                         <rect key="frame" x="39" y="19" width="19" height="21"/>
@@ -160,9 +170,15 @@
         </menu>
         <customObject id="v57-k4-XyL" customClass="PreferencesWindowController" customModule="TimerSwift" customModuleProvider="target">
             <connections>
+                <outlet property="timerTasks" destination="fGB-ls-bv6" id="18u-HZ-hka"/>
                 <outlet property="view" destination="lyg-Og-iS6" id="tit-Xz-ARO"/>
             </connections>
         </customObject>
+        <arrayController objectClassName="TimerSwift.TimerTaskRow" id="fGB-ls-bv6" userLabel="Timer Task Array Controller">
+            <connections>
+                <binding destination="v57-k4-XyL" name="contentArray" keyPath="self.dataArray" id="Rnu-io-qTW"/>
+            </connections>
+        </arrayController>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
