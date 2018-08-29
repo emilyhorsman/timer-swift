@@ -68,6 +68,7 @@ extension PreferencesWindowController: NSTextFieldDelegate {
     }
 }
 
+
 extension PreferencesWindowController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return data.count

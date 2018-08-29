@@ -136,11 +136,11 @@
                 <constraints>
                     <constraint firstItem="eus-z1-3p9" firstAttribute="leading" secondItem="lyg-Og-iS6" secondAttribute="leading" constant="20" id="Cth-HY-gsU"/>
                     <constraint firstItem="gdp-t3-cQr" firstAttribute="top" secondItem="eus-z1-3p9" secondAttribute="bottom" id="Em9-LR-Gl8"/>
-                    <constraint firstAttribute="bottom" secondItem="gdp-t3-cQr" secondAttribute="bottom" constant="20" id="HFu-N8-it9"/>
                     <constraint firstItem="eus-z1-3p9" firstAttribute="top" secondItem="NXh-ak-kse" secondAttribute="bottom" constant="8" id="M7y-ej-GCJ"/>
                     <constraint firstItem="NXh-ak-kse" firstAttribute="leading" secondItem="lyg-Og-iS6" secondAttribute="leading" constant="20" id="UgU-bh-Kww"/>
+                    <constraint firstAttribute="bottom" secondItem="gdp-t3-cQr" secondAttribute="bottom" constant="20" symbolic="YES" id="X6K-30-hxy"/>
                     <constraint firstAttribute="trailing" secondItem="eus-z1-3p9" secondAttribute="trailing" constant="20" symbolic="YES" id="dyM-dy-MVi"/>
-                    <constraint firstItem="gdp-t3-cQr" firstAttribute="leading" secondItem="lyg-Og-iS6" secondAttribute="leading" constant="20" id="ej5-L8-6AP"/>
+                    <constraint firstItem="gdp-t3-cQr" firstAttribute="leading" secondItem="lyg-Og-iS6" secondAttribute="leading" constant="20" symbolic="YES" id="ej5-L8-6AP"/>
                     <constraint firstItem="54t-K2-gJR" firstAttribute="leading" secondItem="gdp-t3-cQr" secondAttribute="trailing" id="fzu-UQ-doU"/>
                     <constraint firstItem="NXh-ak-kse" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="lyg-Og-iS6" secondAttribute="trailing" constant="-20" id="oUk-6k-sUe"/>
                     <constraint firstItem="NXh-ak-kse" firstAttribute="top" secondItem="lyg-Og-iS6" secondAttribute="top" constant="20" id="sKk-9N-PPt"/>
