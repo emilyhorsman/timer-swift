@@ -8,42 +8,31 @@
 
 import Cocoa
 
-extension Array {
-    mutating func removeIndices(in indices: IndexSet) {
-        var count = 0
-        indices.forEach { index in
-            remove(at: index - count)
-            count += 1
-        }
-    }
-}
-
 class PreferencesWindowController: NSViewController {
     @IBOutlet weak var timerTasksTableView: NSTableView!
     @IBOutlet weak var removeButton: NSButton!
 
-    var data = [
-        "3DB3",
-        "3GC3",
-        "3MI3",
-        "3SD3",
-        "4HC3",
-    ]
+    var model = TimerTasksModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        model.append("3DB3")
+        model.append("3GC3")
+        model.append("3MI3")
+        model.append("3SD3")
+        model.append("4HC3")
         timerTasksTableView.dataSource = self
         timerTasksTableView.delegate = self
         removeButton.isEnabled = false
     }
 
     @IBAction func addClicked(_ sender: Any) {
-        data.append("New Timer")
+        model.append("New Timer")
         timerTasksTableView.reloadData()
     }
 
     @IBAction func removeClicked(_ sender: Any) {
-        data.removeIndices(in: timerTasksTableView.selectedRowIndexes)
+        model.removeIndices(in: timerTasksTableView.selectedRowIndexes)
         timerTasksTableView.reloadData()
     }
 }
@@ -54,15 +43,13 @@ extension PreferencesWindowController: NSTextFieldDelegate {
         guard let textField = obj.object as? NSTextField else {
             return
         }
-        let row = textField.tag
-        guard row >= 0 && row < data.count else {
+        guard model.update(fromTextFieldWithTag: textField) else {
             return
         }
-        data[row] = textField.stringValue
         // Probably unnecessary but it's just text (thus cheap?) and builds
         // confidence that the backing data is synced.
         timerTasksTableView.reloadData(
-            forRowIndexes: IndexSet(integer: row),
+            forRowIndexes: IndexSet(integer: textField.tag),
             columnIndexes: IndexSet(integer: 0)
         )
     }
@@ -71,13 +58,13 @@ extension PreferencesWindowController: NSTextFieldDelegate {
 
 extension PreferencesWindowController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return data.count
+        return model.count
     }
 }
 
 extension PreferencesWindowController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard row >= 0 && row < data.count else {
+        guard model.has(index: row) else {
             return nil
         }
 
@@ -98,7 +85,7 @@ extension PreferencesWindowController: NSTableViewDelegate {
         guard let textField = cell.textField else {
             return nil
         }
-        textField.stringValue = data[row]
+        textField.stringValue = model[row]
         textField.isEditable = true
         textField.delegate = self
         textField.tag = row
