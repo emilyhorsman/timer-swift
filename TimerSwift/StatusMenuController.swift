@@ -113,6 +113,10 @@ extension StatusMenuController: TimerTasksModelDelegate {
     func timerTasks(didRemove element: String) {
         if let menuItem = menuItems.removeValue(forKey: element) {
             statusMenu.removeItem(menuItem)
+            menuItems.forEach { (_, menuItem) in
+                let menuPosition = statusMenu.index(of: menuItem) - 1
+                menuItem.keyEquivalent = String(menuPosition)
+            }
         }
     }
 }
