@@ -19,15 +19,33 @@ extension Array {
     }
 }
 
-class TimerTasksModel {
+protocol TimerTasksModelDelegate {
+    func timerTasks(didAppend element: String)
+
+    func timerTasks(didUpdate element: String, with newValue: String)
+
+    func timerTasks(didRemove element: String)
+}
+
+class TimerTasksModel: NSObject {
     private var data = [String]()
+    var delegate: TimerTasksModelDelegate?
 
     func append(_ element: String) {
         data.append(element)
+        if let d = delegate {
+            d.timerTasks(didAppend: element)
+        }
     }
 
     func removeIndices(in indices: IndexSet) {
+        let titles = indices.map { data[$0] }
         data.removeIndices(in: indices)
+        if let d = delegate {
+            titles.forEach { title in
+                d.timerTasks(didRemove: title)
+            }
+        }
     }
 
     subscript(index: Int) -> String {
@@ -36,7 +54,11 @@ class TimerTasksModel {
         }
 
         set(newValue) {
+            let oldValue = data[index]
             data[index] = newValue
+            if let d = delegate {
+                d.timerTasks(didUpdate: oldValue, with: newValue)
+            }
         }
     }
 
