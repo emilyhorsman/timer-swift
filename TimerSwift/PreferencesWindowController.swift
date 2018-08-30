@@ -12,27 +12,25 @@ class PreferencesWindowController: NSViewController {
     @IBOutlet weak var timerTasksTableView: NSTableView!
     @IBOutlet weak var removeButton: NSButton!
 
-    var model = TimerTasksModel()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.append("3DB3")
-        model.append("3GC3")
-        model.append("3MI3")
-        model.append("3SD3")
-        model.append("4HC3")
+        TimerTasksModel.shared.append("3DB3")
+        TimerTasksModel.shared.append("3GC3")
+        TimerTasksModel.shared.append("3MI3")
+        TimerTasksModel.shared.append("3SD3")
+        TimerTasksModel.shared.append("4HC3")
         timerTasksTableView.dataSource = self
         timerTasksTableView.delegate = self
         removeButton.isEnabled = false
     }
 
     @IBAction func addClicked(_ sender: Any) {
-        model.append("New Timer")
+        TimerTasksModel.shared.append("New Timer")
         timerTasksTableView.reloadData()
     }
 
     @IBAction func removeClicked(_ sender: Any) {
-        model.removeIndices(in: timerTasksTableView.selectedRowIndexes)
+        TimerTasksModel.shared.removeIndices(in: timerTasksTableView.selectedRowIndexes)
         timerTasksTableView.reloadData()
     }
 }
@@ -43,7 +41,7 @@ extension PreferencesWindowController: NSTextFieldDelegate {
         guard let textField = obj.object as? NSTextField else {
             return
         }
-        guard model.update(fromTextFieldWithTag: textField) else {
+        guard TimerTasksModel.shared.update(fromTextFieldWithTag: textField) else {
             return
         }
         // Probably unnecessary but it's just text (thus cheap?) and builds
@@ -58,13 +56,13 @@ extension PreferencesWindowController: NSTextFieldDelegate {
 
 extension PreferencesWindowController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return model.count
+        return TimerTasksModel.shared.count
     }
 }
 
 extension PreferencesWindowController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard model.has(index: row) else {
+        guard TimerTasksModel.shared.has(index: row) else {
             return nil
         }
 
@@ -85,7 +83,7 @@ extension PreferencesWindowController: NSTableViewDelegate {
         guard let textField = cell.textField else {
             return nil
         }
-        textField.stringValue = model[row]
+        textField.stringValue = TimerTasksModel.shared[row]
         textField.isEditable = true
         textField.delegate = self
         textField.tag = row

@@ -74,6 +74,7 @@ class StatusMenuController: NSObject {
     }
 
     override func awakeFromNib() {
+        TimerTasksModel.shared.delegate = self
         statusItem.title = "Timer"
         statusItem.menu = statusMenu
         // Take control of whether items are enabled/disabled from the menu.
@@ -114,6 +115,4 @@ extension StatusMenuController: TimerTasksModelDelegate {
             statusMenu.removeItem(menuItem)
         }
     }
-
-
 }

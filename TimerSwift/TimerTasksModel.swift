@@ -28,8 +28,14 @@ protocol TimerTasksModelDelegate {
 }
 
 class TimerTasksModel: NSObject {
+    static let shared = TimerTasksModel()
+
     private var data = [String]()
     var delegate: TimerTasksModelDelegate?
+
+    private override init() {
+        super.init()
+    }
 
     func append(_ element: String) {
         data.append(element)
