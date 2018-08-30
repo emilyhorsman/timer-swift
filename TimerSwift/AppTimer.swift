@@ -28,7 +28,7 @@ class AppTimer {
         // Avoiding scheduledTimer with the default run loop mode because we
         // want to be able to update the UI (e.g., the timer/NSMenu title) while
         // the menu is open.
-        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
     }
 
     deinit {

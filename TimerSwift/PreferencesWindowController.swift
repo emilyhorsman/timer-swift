@@ -36,7 +36,7 @@ class PreferencesWindowController: NSViewController {
 }
 
 extension PreferencesWindowController: NSTextFieldDelegate {
-    override func controlTextDidEndEditing(_ obj: Notification) {
+    func controlTextDidEndEditing(_ obj: Notification) {
         // TODO: Prevent blank entries.
         guard let textField = obj.object as? NSTextField else {
             return

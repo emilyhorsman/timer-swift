@@ -107,6 +107,7 @@
 				TargetAttributes = {
 					A1F21A6521345757001FDB94 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -295,7 +296,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = emilyhorsman.TimerSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -313,7 +314,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = emilyhorsman.TimerSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
