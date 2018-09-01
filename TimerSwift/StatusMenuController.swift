@@ -87,6 +87,15 @@ class StatusMenuController: NSObject {
                 self.statusItem.title = label
             }
         }
+
+        let savePanel = NSSavePanel()
+        savePanel.allowedFileTypes = ["csv"]
+        savePanel.allowsOtherFileTypes = false
+        savePanel.canCreateDirectories = true
+        savePanel.delegate = self
+        savePanel.begin { result in
+            print(result)
+        }
     }
 }
 
@@ -121,5 +130,16 @@ extension StatusMenuController: TimerTasksModelDelegate {
             }
         }
         TimerTasksModel.shared.saveData()
+    }
+}
+
+extension StatusMenuController: NSOpenSavePanelDelegate {
+    func panel(_ sender: Any, userEnteredFilename filename: String, confirmed okFlag: Bool) -> String? {
+        guard okFlag else {
+            print("Not okay!")
+            return nil
+        }
+        print(filename, okFlag)
+        return filename
     }
 }
