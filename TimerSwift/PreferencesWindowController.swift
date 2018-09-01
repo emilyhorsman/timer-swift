@@ -14,11 +14,7 @@ class PreferencesWindowController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        TimerTasksModel.shared.append("3DB3")
-        TimerTasksModel.shared.append("3GC3")
-        TimerTasksModel.shared.append("3MI3")
-        TimerTasksModel.shared.append("3SD3")
-        TimerTasksModel.shared.append("4HC3")
+        TimerTasksModel.shared.loadData()
         timerTasksTableView.dataSource = self
         timerTasksTableView.delegate = self
         removeButton.isEnabled = false

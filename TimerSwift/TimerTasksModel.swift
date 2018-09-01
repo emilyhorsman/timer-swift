@@ -37,6 +37,38 @@ class TimerTasksModel: NSObject {
         super.init()
     }
 
+    func loadData() {
+        do {
+            let contents = try String(contentsOf: dataPath, encoding: .utf8)
+            contents.split(separator: "\n").forEach { line in
+                append(String(line))
+            }
+        } catch {
+            print(error)
+        }
+    }
+
+    func saveData() {
+        do {
+            try data.joined(separator: "\n").write(
+                to: dataPath,
+                atomically: false,
+                encoding: .utf8
+            )
+        } catch {
+            print(error)
+        }
+    }
+
+    private var dataPath: URL {
+        get {
+            return URL(
+                fileURLWithPath: NSHomeDirectory(),
+                isDirectory: true
+            ).appendingPathComponent("TimerTasksList")
+        }
+    }
+
     func append(_ element: String) {
         data.append(element)
         if let d = delegate {

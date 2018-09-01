@@ -102,12 +102,14 @@ extension StatusMenuController: TimerTasksModelDelegate {
         item.isEnabled = true
         statusMenu.insertItem(item, at: 2 + menuItems.count)
         menuItems[title] = item
+        TimerTasksModel.shared.saveData()
     }
 
     func timerTasks(didUpdate element: String, with newValue: String) {
         menuItems[newValue] = menuItems[element]
         menuItems[newValue]!.title = newValue
         menuItems.removeValue(forKey: element)
+        TimerTasksModel.shared.saveData()
     }
 
     func timerTasks(didRemove element: String) {
@@ -118,5 +120,6 @@ extension StatusMenuController: TimerTasksModelDelegate {
                 menuItem.keyEquivalent = String(menuPosition)
             }
         }
+        TimerTasksModel.shared.saveData()
     }
 }
