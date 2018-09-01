@@ -89,12 +89,15 @@ class StatusMenuController: NSObject {
             }
         }
 
-        savePanel.allowedFileTypes = ["csv"]
-        savePanel.allowsOtherFileTypes = false
-        savePanel.canCreateDirectories = true
-        savePanel.delegate = self
-        savePanel.begin { result in
-            print(result)
+        if TimerTasksModel.shared.loggingPath == nil {
+            savePanel.title = "Select timer completion log"
+            savePanel.allowedFileTypes = ["csv"]
+            savePanel.allowsOtherFileTypes = false
+            savePanel.canCreateDirectories = true
+            savePanel.delegate = self
+            savePanel.begin { result in
+                // Nothing to do here! It'll get handled in the delegate.
+            }
         }
     }
 }
