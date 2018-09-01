@@ -24,6 +24,7 @@ class StatusMenuController: NSObject {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let appTimer = AppTimer()
     let savePanel = NSSavePanel()
+    let csvDateFormatter = ISO8601DateFormatter()
 
     @IBAction func configureTasksClicked(_ sender: NSMenuItem) {
         preferencesWindow.level = .normal
@@ -54,6 +55,9 @@ class StatusMenuController: NSObject {
     }
 
     func stop() {
+        guard case .Running(let title) = timerState else {
+            return assertionFailure("stop called when the timer was not Running")
+        }
         timerState = .Stopped
         finishTimerMenuItem.isEnabled = false
         menuItems.forEach { (title, menuItem) in
@@ -62,6 +66,14 @@ class StatusMenuController: NSObject {
             menuItem.title = title
         }
         statusItem.title = "Timer"
+
+        let cols: [String] = [
+            title,
+            csvDateFormatter.string(from: appTimer.startTime),
+            csvDateFormatter.string(from: Date()),
+        ]
+        let row = cols.joined(separator: ",") + "\n"
+        TimerTasksModel.shared.log(finishedTimerEntry: row)
     }
 
     @IBAction func timerTaskClicked(_ sender: NSMenuItem) {
@@ -75,6 +87,8 @@ class StatusMenuController: NSObject {
     }
 
     override func awakeFromNib() {
+        csvDateFormatter.timeZone = TimeZone.current
+
         TimerTasksModel.shared.delegate = self
         statusItem.title = "Timer"
         statusItem.menu = statusMenu

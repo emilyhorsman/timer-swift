@@ -37,6 +37,24 @@ class TimerTasksModel: NSObject {
         super.init()
     }
 
+    func log(finishedTimerEntry row: String) -> Void {
+        guard let path = loggingPath else {
+            return
+        }
+        guard let url = URL(string: path) else {
+            return
+        }
+        do {
+            // TODO: Need permissions.
+            // TODO: This should append.
+            try row.write(to: url, atomically: false, encoding: .utf8)
+        } catch {
+            print("Failed to write finished timer entry to log.", url)
+            print(row)
+            print(error)
+        }
+    }
+
     var loggingPath: String? {
         set(newValue) {
             guard let value = newValue else {
