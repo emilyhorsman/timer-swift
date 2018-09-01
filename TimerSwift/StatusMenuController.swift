@@ -23,6 +23,7 @@ class StatusMenuController: NSObject {
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let appTimer = AppTimer()
+    let savePanel = NSSavePanel()
 
     @IBAction func configureTasksClicked(_ sender: NSMenuItem) {
         preferencesWindow.level = .normal
@@ -88,7 +89,6 @@ class StatusMenuController: NSObject {
             }
         }
 
-        let savePanel = NSSavePanel()
         savePanel.allowedFileTypes = ["csv"]
         savePanel.allowsOtherFileTypes = false
         savePanel.canCreateDirectories = true
@@ -139,7 +139,9 @@ extension StatusMenuController: NSOpenSavePanelDelegate {
             print("Not okay!")
             return nil
         }
-        print(filename, okFlag)
+        // TODO: This is probably not robust enough. Handle directoryURL nil by
+        // returning nil?
+        TimerTasksModel.shared.loggingPath = savePanel.directoryURL?.appendingPathComponent(filename).absoluteString
         return filename
     }
 }

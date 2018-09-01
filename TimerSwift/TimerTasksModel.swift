@@ -37,6 +37,32 @@ class TimerTasksModel: NSObject {
         super.init()
     }
 
+    var loggingPath: String? {
+        set(newValue) {
+            guard let value = newValue else {
+                return
+            }
+            let url = URL(
+                fileURLWithPath: NSHomeDirectory(),
+                isDirectory: true
+            ).appendingPathComponent("TimerTasksLoggingOutput")
+            do {
+                try? value.write(to: url, atomically: false, encoding: .utf8)
+            }
+        }
+
+        get {
+            do {
+                let url = URL(
+                    fileURLWithPath: NSHomeDirectory(),
+                    isDirectory: true
+                ).appendingPathComponent("TimerTasksLoggingOutput")
+                let path = try? String(contentsOf: url, encoding: .utf8)
+                return path
+            }
+        }
+    }
+
     func loadData() {
         do {
             let contents = try String(contentsOf: dataPath, encoding: .utf8)
