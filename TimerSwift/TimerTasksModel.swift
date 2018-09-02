@@ -51,7 +51,6 @@ class TimerTasksModel: NSObject {
             defer {
                 handle.closeFile()
             }
-            handle.seekToEndOfFile()
             handle.write(rowData)
         } catch {
             print(error)
