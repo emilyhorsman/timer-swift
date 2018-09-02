@@ -156,9 +156,7 @@ extension StatusMenuController: NSOpenSavePanelDelegate {
             print("Not okay!")
             return nil
         }
-        // TODO: This is probably not robust enough. Handle directoryURL nil by
-        // returning nil?
-        TimerTasksModel.shared.loggingPath = savePanel.directoryURL?.appendingPathComponent(filename).absoluteString
+        TimerTasksModel.shared.loggingPath = savePanel.url?.absoluteString
         return filename
     }
 }
