@@ -38,19 +38,19 @@ class TimerTasksModel: NSObject {
     }
 
     func log(finishedTimerEntry row: String) -> Void {
-        guard let path = loggingPath else {
-            return
-        }
-        guard let url = URL(string: path) else {
+        guard
+            let path = loggingPath,
+            let url = URL(string: path),
+            let rowData = row.data(using: .utf8)
+        else {
+            print("Could not construct data")
             return
         }
         do {
-            // TODO: Need permissions.
-            // TODO: This should append.
-            try row.write(to: url, atomically: false, encoding: .utf8)
+            let handle = try FileHandle(forWritingTo: url)
+            handle.seekToEndOfFile()
+            handle.write(rowData)
         } catch {
-            print("Failed to write finished timer entry to log.", url)
-            print(row)
             print(error)
         }
     }
