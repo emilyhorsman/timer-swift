@@ -48,6 +48,14 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0YL-a0-mwx">
+                                            <rect key="frame" x="18" y="230" width="317" height="17"/>
+                                            <textFieldCell key="cell" title="Add, remove, or rename tasks available in the Timer" id="lGw-1o-AGg">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eus-z1-3p9" userLabel="Timers Scroll View">
                                             <rect key="frame" x="20" y="50" width="314" height="172"/>
                                             <clipView key="contentView" id="zZ1-ps-iwi">
@@ -156,14 +164,6 @@
                                                 <real value="3.4028234663852886e+38"/>
                                             </customSpacing>
                                         </stackView>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0YL-a0-mwx">
-                                            <rect key="frame" x="18" y="230" width="317" height="17"/>
-                                            <textFieldCell key="cell" title="Add, remove, or rename tasks available in the Timer" id="lGw-1o-AGg">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="eus-z1-3p9" firstAttribute="top" secondItem="0YL-a0-mwx" secondAttribute="bottom" constant="8" symbolic="YES" id="3Km-0e-WPf"/>
@@ -185,6 +185,42 @@
                                 <view key="view" id="LfV-Th-ePc">
                                     <rect key="frame" x="10" y="33" width="354" height="292"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uFO-vZ-TzM">
+                                            <rect key="frame" x="18" y="253" width="111" height="19"/>
+                                            <textFieldCell key="cell" title="Logging Output" id="6X2-1b-ykS">
+                                                <font key="font" size="15" name=".AppleSystemUIFont"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B91-vS-jnk">
+                                            <rect key="frame" x="18" y="228" width="274" height="17"/>
+                                            <textFieldCell key="cell" title="Select a CSV file to log finished timer entries" id="MbL-Pt-5yc">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I4K-st-w2t">
+                                            <rect key="frame" x="20" y="200" width="314" height="20"/>
+                                            <pathCell key="cell" controlSize="small" selectable="YES" editable="YES" alignment="left" id="U46-OE-oQO">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <url key="url" string="file://localhost/Applications/"/>
+                                            </pathCell>
+                                        </pathControl>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="B91-vS-jnk" secondAttribute="trailing" constant="20" symbolic="YES" id="4xe-dY-HYN"/>
+                                        <constraint firstAttribute="trailing" secondItem="I4K-st-w2t" secondAttribute="trailing" constant="20" symbolic="YES" id="5E4-Dz-07Q"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uFO-vZ-TzM" secondAttribute="trailing" constant="20" symbolic="YES" id="7B3-cL-8ol"/>
+                                        <constraint firstItem="B91-vS-jnk" firstAttribute="top" secondItem="uFO-vZ-TzM" secondAttribute="bottom" constant="8" symbolic="YES" id="I4L-rc-FSk"/>
+                                        <constraint firstItem="uFO-vZ-TzM" firstAttribute="top" secondItem="LfV-Th-ePc" secondAttribute="top" constant="20" symbolic="YES" id="J5v-DB-AHo"/>
+                                        <constraint firstItem="I4K-st-w2t" firstAttribute="leading" secondItem="LfV-Th-ePc" secondAttribute="leading" constant="20" symbolic="YES" id="euC-lY-RaZ"/>
+                                        <constraint firstItem="uFO-vZ-TzM" firstAttribute="leading" secondItem="LfV-Th-ePc" secondAttribute="leading" constant="20" symbolic="YES" id="fGE-9t-OsU"/>
+                                        <constraint firstItem="I4K-st-w2t" firstAttribute="top" secondItem="B91-vS-jnk" secondAttribute="bottom" constant="8" symbolic="YES" id="gNe-kA-UYo"/>
+                                        <constraint firstItem="B91-vS-jnk" firstAttribute="leading" secondItem="uFO-vZ-TzM" secondAttribute="leading" id="tUs-Ym-Hmd"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
