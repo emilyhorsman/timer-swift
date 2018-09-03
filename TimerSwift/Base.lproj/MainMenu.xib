@@ -29,7 +29,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="lyg-Og-iS6">
                 <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NXh-ak-kse">
                         <rect key="frame" x="18" y="236" width="124" height="44"/>
@@ -113,7 +113,6 @@
                                 <rect key="frame" x="0.0" y="-1" width="30" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gdp-t3-cQr" secondAttribute="height" multiplier="1:1" id="3Rf-l8-cXf"/>
-                                    <constraint firstAttribute="width" constant="30" id="eUl-1a-FI9"/>
                                     <constraint firstAttribute="height" constant="30" id="ulI-Du-dcJ"/>
                                 </constraints>
                                 <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bjY-Tk-vcf">
@@ -128,7 +127,6 @@
                                 <rect key="frame" x="30" y="-1" width="30" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="JzK-P9-v8e"/>
-                                    <constraint firstAttribute="width" constant="30" id="WlK-ET-KpB"/>
                                     <constraint firstAttribute="width" secondItem="54t-K2-gJR" secondAttribute="height" multiplier="1:1" id="dLH-Rp-ChA"/>
                                 </constraints>
                                 <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="D1z-6A-oGw">
