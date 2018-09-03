@@ -11,6 +11,7 @@ import Cocoa
 class PreferencesWindowController: NSViewController {
     @IBOutlet weak var timerTasksTableView: NSTableView!
     @IBOutlet weak var removeButton: NSButton!
+    @IBOutlet weak var loggingPathControl: NSPathControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,10 @@ class PreferencesWindowController: NSViewController {
         timerTasksTableView.dataSource = self
         timerTasksTableView.delegate = self
         removeButton.isEnabled = false
+
+        if let path = TimerTasksModel.shared.loggingPath {
+            loggingPathControl.url = URL(string: path)
+        }
     }
 
     @IBAction func addClicked(_ sender: Any) {
