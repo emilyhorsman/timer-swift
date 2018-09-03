@@ -35,7 +35,7 @@
                         <rect key="frame" x="18" y="236" width="124" height="44"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Timers" id="Ozq-uZ-VJu">
                             <font key="font" metaFont="systemHeavy" size="36"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
@@ -101,7 +101,7 @@
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <tableHeaderView key="headerView" id="vJ2-9X-RY5">
+                        <tableHeaderView key="headerView" wantsLayer="YES" id="vJ2-9X-RY5">
                             <rect key="frame" x="0.0" y="0.0" width="358" height="25"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
