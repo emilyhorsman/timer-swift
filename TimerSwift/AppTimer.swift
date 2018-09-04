@@ -54,6 +54,6 @@ class AppTimer {
     }
 
     var interval: TimeInterval {
-        return startTime.timeIntervalSinceNow
+        return Date().timeIntervalSince(startTime)
     }
 }
