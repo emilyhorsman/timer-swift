@@ -15,7 +15,7 @@ for line in lines:
     start = iso8601.parse_date(start)
     end = iso8601.parse_date(end)
     interval = end - start
-    key = (start.year, start.month, start.day)
+    key = start.strftime('%Y %b %a %-d')
     if key not in sum:
         sum[key] = datetime.timedelta()
     sum[key] += interval
@@ -24,6 +24,6 @@ for line in lines:
 
 for key, value in sum.items():
     if key in reached:
-        print(key, value, '4h by', reached[key].strftime('%-I:%M%p'))
+        print(key, '-', value, '- 4h by', reached[key].strftime('%-I:%M%p'))
     else:
-        print(key, value)
+        print(key, '-', value)
