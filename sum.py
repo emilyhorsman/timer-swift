@@ -15,7 +15,7 @@ for line in lines:
     start = iso8601.parse_date(start)
     end = iso8601.parse_date(end)
     interval = end - start
-    key = start.strftime('%a %b %-d')
+    key = start.strftime('%a %b %d')
     if key not in sum:
         sum[key] = datetime.timedelta()
     sum[key] += interval
