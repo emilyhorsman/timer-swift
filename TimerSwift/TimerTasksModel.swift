@@ -79,7 +79,7 @@ class TimerTasksModel: NSObject {
                     isDirectory: true
                 ).appendingPathComponent("TimerTasksLoggingOutput")
                 let path = try? String(contentsOf: url, encoding: .utf8)
-                return path
+                return path?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             }
         }
     }
