@@ -50,11 +50,16 @@ for key, value in sum.items():
     else:
         table['4h By'].append('-')
 
-table['Date'].append('')
-table['Total'].append('')
-table['4h By'].append('')
-for code in sorted(codes):
-    table[code].append(code)
+# Blank newline
+for k in table.keys():
+    table[k].append('')
+
+if len(table['Date']) > 30:
+    table['Date'].append('')
+    table['Total'].append('')
+    table['4h By'].append('')
+    for code in sorted(codes):
+        table[code].append(code)
 
 table['Date'].append('Total')
 table['Total'].append(total // 60 // 60)
